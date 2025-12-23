@@ -25,6 +25,26 @@ class Sudoku {
     return List.generate(9, (i) => List<int>.from(grid[i]));
   }
 
+  Sudoku copyWith({
+    List<List<int>>? grid,
+    List<List<int>>? solution,
+    List<List<int>>? puzzle,
+    int? time,
+    generator.Level? level,
+    int? completionTime,
+  }) {
+    final copy = Sudoku();
+    copy._grid = grid ?? copyGrid(_grid);
+    copy._time = time ?? _time;
+    copy.level = level ?? this.level;
+    copy.solution = solution != null
+        ? copyGrid(solution)
+        : copyGrid(this.solution);
+    copy.puzzle = puzzle != null ? copyGrid(puzzle) : copyGrid(this.puzzle);
+    copy.completionTime = completionTime ?? this.completionTime;
+    return copy;
+  }
+
   Sudoku.fromGrid(List<List<int>> grid) {
     if (grid.length != 9 || grid.first.length != 9) {
       throw Exception('Invalid grid');
