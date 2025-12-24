@@ -132,6 +132,7 @@ Sudoku generateGrid({Level? level}) {
   sudoku.solution = Sudoku.copyGrid(sudoku.grid);
 
   removeNumbers(sudoku, fill);
+  sudoku.puzzle = Sudoku.copyGrid(sudoku.grid);
 
   return sudoku;
 }

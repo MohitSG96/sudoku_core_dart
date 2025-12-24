@@ -10,7 +10,7 @@ class Sudoku {
   late List<List<int>> _grid, puzzle, solution;
   late int _time;
   late generator.Level level;
-  late int completionTime;
+  int? completionTime;
 
   List<List<int>> get grid => _grid;
   int get time => _time;
